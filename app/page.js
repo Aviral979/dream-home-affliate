@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 const categories = [
   { slug: "living-room", label: "Living Room", img: "/2.png" },
   { slug: "bedroom", label: "Bedroom", img: "/3.png" },
-  { slug: "bathroom", label: "Bathroom", img: "/4.png" },
+  { slug: "bathroom", label: "Bathroom", img: "/new-bathroom.jpg" },
   { slug: "kitchen", label: "Kitchen", img: "/5.png" },
   { slug: "decor", label: "Decor", img: "/6.png" },
 ];
@@ -40,13 +40,13 @@ export default function HomePage() {
         <Image src="/1.png" alt="Dream room transformation" fill priority className={styles.heroImg} />
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
-          <span className={styles.eyebrow}>KANPUR · INDIA</span>
-          <h1 className={styles.headline}>Empty Room → Dream Room</h1>
-          <p className={styles.subtext}>
+          <span className={`${styles.eyebrow} animate-fade-up`}>KANPUR · INDIA</span>
+          <h1 className={`${styles.headline} animate-fade-up delay-1`}>Empty Room → Dream Room</h1>
+          <p className={`${styles.subtext} animate-fade-up delay-2`}>
             A 19-year-old designer. One transformation every day.<br />
             Sage • Coastal • Minimal. All budget-friendly.
           </p>
-          <div className={styles.heroCtas}>
+          <div className={`${styles.heroCtas} animate-fade-up delay-3`}>
             <Link href="/shop" className="btn-primary">Shop the Look</Link>
             <a href="https://www.instagram.com/dream._home_designs?igsh=MWRoamdnOGNkdXYycw==" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ color: "#fff", borderColor: "rgba(255,255,255,0.4)" }}>
               Follow on Instagram ↗
@@ -56,7 +56,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ SHOP BY ROOM ═══ */}
-      <section className={`section ${styles.roomSection}`}>
+      <section className={`section ${styles.roomSection} animate-fade-up delay-1`}>
         <div className="container">
           <h2 className={styles.sectionTitle}>Shop by Room</h2>
           <div className={styles.roomGrid}>
@@ -73,7 +73,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ TRENDING PICKS ═══ */}
-      <section className={`section ${styles.trendingSection}`}>
+      <section className={`section ${styles.trendingSection} animate-fade-up delay-2`}>
         <div className="container">
           <h2 className={styles.sectionTitle}>Trending Picks</h2>
           {loading ? (
