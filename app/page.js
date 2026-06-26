@@ -10,7 +10,7 @@ import styles from "./page.module.css";
 const categories = [
   { slug: "living-room", label: "Living Room", img: "/2.png" },
   { slug: "bedroom", label: "Bedroom", img: "/3.png" },
-  { slug: "bathroom", label: "Bathroom", img: "/new-bathroom.jpg" },
+  { slug: "bathroom", label: "Bathroom", img: "/4.png" },
   { slug: "kitchen", label: "Kitchen", img: "/5.png" },
   { slug: "decor", label: "Decor", img: "/6.png" },
 ];
