@@ -1,0 +1,114 @@
+/* ═══ HERO ═══ */
+.hero {
+  position: relative; width: 100%; min-height: 90vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.heroImg { object-fit: cover; z-index: 0; }
+.heroOverlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(135deg, rgba(46,46,42,0.55) 0%, rgba(46,46,42,0.15) 100%);
+}
+.heroContent {
+  position: relative; z-index: 2; color: #fff;
+  padding: 120px 0 60px;
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+  background: rgba(156,175,136,0.3); backdrop-filter: blur(8px);
+  padding: 6px 16px; border-radius: 20px;
+  margin-bottom: 20px;
+}
+.headline { font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 16px; line-height: 1.1; }
+.subtext { font-size: clamp(0.9rem, 2vw, 1.15rem); opacity: 0.9; line-height: 1.7; margin-bottom: 32px; }
+.heroCtas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ═══ SECTION TITLE ═══ */
+.sectionTitle {
+  text-align: center; margin-bottom: 40px;
+  position: relative;
+}
+.sectionTitle::after {
+  content: ''; display: block;
+  width: 48px; height: 3px; background: var(--sage);
+  margin: 12px auto 0; border-radius: 2px;
+}
+
+/* ═══ SHOP BY ROOM ═══ */
+.roomGrid {
+  display: flex; gap: 16px; overflow-x: auto;
+  padding-bottom: 8px; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.roomGrid::-webkit-scrollbar { display: none; }
+.roomTile {
+  flex: 0 0 160px; scroll-snap-align: start;
+  text-align: center; transition: var(--transition);
+}
+.roomTile:hover { transform: translateY(-4px); }
+.roomImgWrap {
+  position: relative; width: 100%; padding-top: 100%;
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.roomImg { object-fit: cover; transition: transform 0.5s ease; }
+.roomTile:hover .roomImg { transform: scale(1.08); }
+.roomLabel {
+  display: block; margin-top: 10px;
+  font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;
+  color: var(--charcoal);
+}
+
+@media (min-width: 768px) {
+  .roomGrid { justify-content: center; overflow: visible; }
+  .roomTile { flex: 0 0 180px; }
+}
+
+/* ═══ TRENDING ═══ */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 540px) {
+  .productGrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}
+.emptyHint { text-align: center; font-size: 0.9rem; opacity: 0.6; padding: 40px 0; }
+
+/* ═══ WHY SECTION ═══ */
+.whySection {
+  position: relative; padding: 80px 0;
+  overflow: hidden;
+}
+.whyBg { position: absolute; inset: 0; opacity: 0.06; z-index: 0; }
+.whyBgImg { object-fit: cover; }
+.whyInner { position: relative; z-index: 1; }
+.whyGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.whyCard {
+  text-align: center; padding: 32px 20px;
+  background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--sand);
+  transition: var(--transition);
+}
+.whyCard:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.whyIcon { font-size: 2rem; margin-bottom: 12px; }
+.whyCard h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.whyCard p { font-size: 0.85rem; opacity: 0.7; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .whyGrid { grid-template-columns: 1fr; gap: 16px; }
+  .whySection { padding: 60px 0; }
+}
+
+/* ═══ INSTAGRAM ═══ */
+.igSection { text-align: center; }
+.igSub { font-size: 0.95rem; opacity: 0.6; }
+
+@media (max-width: 768px) {
+  .hero { min-height: 80vh; }
+  .heroContent { text-align: center; padding: 100px 0 40px; }
+  .heroCtas { justify-content: center; }
+}

@@ -1,0 +1,21 @@
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--charcoal);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1.5px solid var(--sand);
+  transition: var(--transition);
+  margin-bottom: 24px;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+.backBtn:hover {
+  border-color: var(--sage);
+  color: var(--sage-dark);
+  transform: translateX(-2px);
+}

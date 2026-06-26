@@ -1,0 +1,27 @@
+.page {
+  padding-top: 100px;
+  min-height: 80vh;
+  padding-bottom: 60px;
+}
+.page h1 {
+  margin-bottom: 8px;
+}
+.updated {
+  font-size: 0.82rem;
+  opacity: 0.5;
+  margin-bottom: 40px;
+}
+.section {
+  margin-bottom: 36px;
+  max-width: 720px;
+}
+.section h2 {
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+  color: var(--charcoal);
+}
+.section p {
+  font-size: 0.92rem;
+  line-height: 1.8;
+  opacity: 0.75;
+}
