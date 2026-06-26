@@ -76,7 +76,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <p className={styles.copy}>
             © {new Date().getFullYear()} Dream Home Designes{" "}
-            <Link href="/adm" style={{ opacity: 0.3, fontSize: "0.8rem", marginLeft: "8px" }}>🔒</Link>
+            <Link href="/adm" style={{ opacity: 0.05, fontSize: "0.6rem", marginLeft: "4px" }}>·</Link>
           </p>
           <p className={styles.disclosure}>
             Dream Home Designes uses affiliate links — we may earn a small commission on some purchases at no extra cost to you.
