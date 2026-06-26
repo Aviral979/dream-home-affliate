@@ -76,11 +76,11 @@ export default function AdmPage() {
   const handleLogin = (e) => {
     e.preventDefault();
     setLoginError("");
-    if (username === "bcp25398" && password === "Aviral@2007") {
+    if (username.trim() === "bcp25398" && password.trim() === "Aviral@2007") {
       localStorage.setItem("dream_admin_auth", "true");
       setUser({ id: "admin" });
     } else {
-      setLoginError("Invalid ID or Password.");
+      setLoginError("Galat ID ya Password. Wapas try karein.");
     }
   };
 
