@@ -23,7 +23,7 @@ const emptyBlogForm = { title: "", imageUrl: "", excerpt: "", bloggerLink: "" };
 export default function AdmPage() {
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [activeTab, setActiveTab] = useState("products");
@@ -42,10 +42,13 @@ export default function AdmPage() {
   const [confirmDelete, setConfirmDelete] = useState(null);
   const [deleteType, setDeleteType] = useState("");
 
-  // Auth listener
+  // Custom Auth listener (Bypass Firebase Auth)
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => { setUser(u); setAuthLoading(false); });
-    return () => unsub();
+    const isLoggedIn = localStorage.getItem("dream_admin_auth");
+    if (isLoggedIn === "true") {
+      setUser({ id: "admin" });
+    }
+    setAuthLoading(false);
   }, []);
 
   // Products listener
@@ -70,14 +73,20 @@ export default function AdmPage() {
 
   const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(""), 3000); };
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     setLoginError("");
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (err) {
-      setLoginError("Invalid credentials. Check email & password.");
+    if (username === "bcp25398" && password === "Aviral@2007") {
+      localStorage.setItem("dream_admin_auth", "true");
+      setUser({ id: "admin" });
+    } else {
+      setLoginError("Invalid ID or Password.");
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("dream_admin_auth");
+    setUser(null);
   };
 
   // ─── PRODUCT CRUD ───
@@ -165,7 +174,7 @@ export default function AdmPage() {
         <div className={styles.loginCard}>
           <h1 className={styles.loginTitle}>🔒 Admin Login</h1>
           <form onSubmit={handleLogin} className={styles.loginForm}>
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required className={styles.input} />
+            <input type="text" placeholder="Admin ID" value={username} onChange={(e) => setUsername(e.target.value)} required className={styles.input} />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required className={styles.input} />
             {loginError && <p className={styles.error}>{loginError}</p>}
             <button type="submit" className="btn-primary" style={{ width: "100%" }}>Sign In</button>
@@ -181,7 +190,7 @@ export default function AdmPage() {
       <div className="container">
         <div className={styles.topBar}>
           <h1>Admin Dashboard</h1>
-          <button onClick={() => signOut(auth)} className={styles.logoutBtn}>Logout</button>
+          <button onClick={handleLogout} className={styles.logoutBtn}>Logout</button>
         </div>
 
         {/* Tabs */}
