@@ -5,7 +5,7 @@ import styles from "./about.module.css";
 
 export const metadata = {
   title: "About — Dream Home Designes",
-  description: "From Kanpur, for India. A 19-year-old designer transforming rooms every day with sage, coastal, and minimalist design — all budget-friendly.",
+  description: "Global design, accessible everywhere. A 19-year-old designer transforming rooms worldwide with sage, coastal, and minimalist design — all budget-friendly.",
 };
 
 export default function AboutPage() {
@@ -21,11 +21,11 @@ export default function AboutPage() {
           </div>
           <div className={styles.headerText}>
             <span className={styles.eyebrow}>OUR STORY</span>
-            <h1>From Kanpur, for India</h1>
+            <h1>Global Design, Accessible Everywhere</h1>
             <p className={styles.intro}>
-              I am a 19-year-old interior design enthusiast from Kanpur. My dream is simple:
-              to make every Indian room beautiful on a budget. No expensive renovations,
-              no permanent changes — just smart picks and creative ideas.
+              I am a 19-year-old interior design enthusiast with a global vision. My dream is simple:
+              to make every room worldwide beautiful on a budget. No expensive renovations,
+              no permanent changes — just smart picks and creative ideas accessible no matter where you live.
             </p>
           </div>
         </div>
@@ -34,13 +34,13 @@ export default function AboutPage() {
         <section className={styles.promise}>
           <h2>The Dream Home Promise</h2>
           <p>
-            Dream Home Designes started on Instagram — daily room transformations, sage green palettes,
-            coastal vibes, Scandinavian minimalism. 66K+ followers trusted us, and now we are here —
-            one place where you can actually buy everything you see in our Reels.
+            Dream Home Designes started with a passion for daily room transformations — sage green palettes,
+            coastal vibes, and Scandinavian minimalism. A growing community trusted us, and now we are here —
+            one global platform where you can actually buy everything you see in our designs.
           </p>
           <p>
-            Every product is personally curated. Every recommendation is actually available in India.
-            And every pick is rental-friendly — move out and everything goes back to normal, no damage at all.
+            Every product is personally curated and accessible globally.
+            Every pick is rental-friendly — move out and everything goes back to normal, no damage at all.
           </p>
         </section>
 
@@ -56,12 +56,12 @@ export default function AboutPage() {
             <div className={styles.featureCard}>
               <span className={styles.featureIcon}>🔗</span>
               <h3>Paint + Furniture Links</h3>
-              <p>We show it, we link it. No guessing, direct purchase from trusted Indian sellers.</p>
+              <p>We show it, we link it. No guessing, direct purchase from trusted sellers worldwide.</p>
             </div>
             <div className={styles.featureCard}>
               <span className={styles.featureIcon}>🏠</span>
               <h3>Small-Home Tips</h3>
-              <p>Real tips for Indian apartments — making small rooms look bigger, storage hacks, and more.</p>
+              <p>Real tips for modern apartments — making small rooms look bigger, smart storage hacks, and more.</p>
             </div>
           </div>
         </section>

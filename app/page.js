@@ -40,7 +40,7 @@ export default function HomePage() {
         <Image src="/1.png" alt="Dream room transformation" fill priority className={styles.heroImg} />
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
-          <span className={`${styles.eyebrow} animate-fade-up`}>KANPUR · INDIA</span>
+          <span className={`${styles.eyebrow} animate-fade-up`}>WORLDWIDE</span>
           <h1 className={`${styles.headline} animate-fade-up delay-1`}>Empty Room → Dream Room</h1>
           <p className={`${styles.subtext} animate-fade-up delay-2`}>
             A 19-year-old designer. One transformation every day.<br />
@@ -109,9 +109,9 @@ export default function HomePage() {
               <p>Every pick is genuinely affordable, not aspirational. Real prices, real products.</p>
             </div>
             <div className={styles.whyCard}>
-              <div className={styles.whyIcon}>🇮🇳</div>
-              <h3>India-First</h3>
-              <p>Everything is actually deliverable in India. No "US only" disappointment.</p>
+              <div className={styles.whyIcon}>🌍</div>
+              <h3>Worldwide Shipping</h3>
+              <p>Our curated products are accessible globally. Transform your space no matter where you are.</p>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function HomePage() {
       <section className={`section ${styles.igSection}`}>
         <div className="container" style={{ textAlign: "center" }}>
           <h2 className={styles.sectionTitle}>As Seen on Instagram</h2>
-          <p className={styles.igSub}>66K+ followers trust us for daily room inspiration ✨</p>
+          <p className={styles.igSub}>Join our community for daily room inspiration ✨</p>
           <a href="https://www.instagram.com/dream._home_designs?igsh=MWRoamdnOGNkdXYycw==" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ marginTop: 24 }}>
             Follow @dream._home_designs
           </a>
