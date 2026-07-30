@@ -25,19 +25,24 @@ export default function BlogPage() {
 
   useEffect(() => {
     let unsub = () => {};
-    const timeout = setTimeout(() => setLoading(false), 3000);
+    const timeout = setTimeout(() => setLoading(false), 5000);
     try {
-      const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
       unsub = onSnapshot(
-        q,
+        collection(db, "blogs"),
         (snap) => {
           clearTimeout(timeout);
-          setBlogs(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+          const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+          docs.sort((a, b) => {
+            const tA = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt || 0);
+            const tB = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt || 0);
+            return tB - tA;
+          });
+          setBlogs(docs);
           setLoading(false);
         },
         (err) => {
           clearTimeout(timeout);
-          console.log("Firestore not configured yet:", err.message);
+          console.error("Firestore blog fetch error:", err.message);
           setLoading(false);
         }
       );

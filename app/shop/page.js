@@ -26,20 +26,47 @@ function ShopContent() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    let unsub = () => {};
-    const timeout = setTimeout(() => setLoading(false), 3000);
+    let unsub1 = () => {};
+    let unsub2 = () => {};
+    const timeout = setTimeout(() => setLoading(false), 5000);
     try {
-      const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
-      unsub = onSnapshot(
-        q,
+      unsub1 = onSnapshot(
+        collection(db, "products"),
         (snap) => {
-          clearTimeout(timeout);
-          setProducts(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
-          setLoading(false);
+          if (snap.docs.length > 0) {
+            clearTimeout(timeout);
+            const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+            docs.sort((a, b) => {
+              const tA = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt || 0);
+              const tB = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt || 0);
+              return tB - tA;
+            });
+            setProducts(docs);
+            setLoading(false);
+          } else {
+            unsub2 = onSnapshot(
+              collection(db, "Products"),
+              (snap2) => {
+                clearTimeout(timeout);
+                const docs = snap2.docs.map((d) => ({ id: d.id, ...d.data() }));
+                docs.sort((a, b) => {
+                  const tA = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt || 0);
+                  const tB = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt || 0);
+                  return tB - tA;
+                });
+                setProducts(docs);
+                setLoading(false);
+              },
+              (err2) => {
+                clearTimeout(timeout);
+                setLoading(false);
+              }
+            );
+          }
         },
         (err) => {
           clearTimeout(timeout);
-          console.log("Firestore not configured yet:", err.message);
+          console.error("Firestore shop error:", err.message);
           setLoading(false);
         }
       );
@@ -47,7 +74,7 @@ function ShopContent() {
       clearTimeout(timeout);
       setLoading(false);
     }
-    return () => { unsub(); clearTimeout(timeout); };
+    return () => { unsub1(); unsub2(); clearTimeout(timeout); };
   }, []);
 
   const setCategory = useCallback(
@@ -60,13 +87,14 @@ function ShopContent() {
   );
 
   const filtered = products.filter((p) => {
-    // Convert legacy formats like "Living Room" to "living-room" for matching
-    const catFormatted = p.category ? p.category.toLowerCase().replace(/\s+/g, "-") : "";
-    const matchCat = !activeCategory || catFormatted === activeCategory;
-    const matchSearch =
-      !searchTerm ||
-      p.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.description?.toLowerCase().includes(searchTerm.toLowerCase());
+    const rawCat = (p.category || p.Category || p.room || "").toLowerCase().trim();
+    const catFormatted = rawCat.replace(/[\s_]+/g, "-");
+    const targetCat = activeCategory.toLowerCase().trim().replace(/[\s_]+/g, "-");
+    const matchCat = !targetCat || catFormatted === targetCat || catFormatted.includes(targetCat) || targetCat.includes(catFormatted);
+    const nameOrTitle = (p.name || p.title || "").toLowerCase();
+    const descText = (p.description || "").toLowerCase();
+    const searchLower = searchTerm.toLowerCase();
+    const matchSearch = !searchTerm || nameOrTitle.includes(searchLower) || descText.includes(searchLower);
     return matchCat && matchSearch;
   });
 

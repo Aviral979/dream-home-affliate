@@ -22,11 +22,19 @@ export default function HomePage() {
   useEffect(() => {
     async function fetchTrending() {
       try {
-        const q = query(collection(db, "products"), orderBy("createdAt", "desc"), limit(6));
-        const snap = await getDocs(q);
-        setTrending(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+        let snap = await getDocs(collection(db, "products"));
+        if (snap.empty) {
+          snap = await getDocs(collection(db, "Products"));
+        }
+        const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+        docs.sort((a, b) => {
+          const tA = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt || 0);
+          const tB = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt || 0);
+          return tB - tA;
+        });
+        setTrending(docs.slice(0, 6));
       } catch (e) {
-        console.log("Firestore not configured yet:", e.message);
+        console.error("Firestore fetch error:", e.message);
       }
       setLoading(false);
     }

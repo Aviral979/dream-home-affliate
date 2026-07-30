@@ -54,9 +54,14 @@ export default function AdmPage() {
   // Products listener
   useEffect(() => {
     if (!user) return;
-    const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
-    const unsub = onSnapshot(q, (snap) => {
-      setProducts(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    const unsub = onSnapshot(collection(db, "products"), (snap) => {
+      const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      docs.sort((a, b) => {
+        const tA = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt || 0);
+        const tB = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt || 0);
+        return tB - tA;
+      });
+      setProducts(docs);
     });
     return () => unsub();
   }, [user]);
@@ -64,9 +69,14 @@ export default function AdmPage() {
   // Blogs listener
   useEffect(() => {
     if (!user) return;
-    const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
-    const unsub = onSnapshot(q, (snap) => {
-      setBlogs(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+    const unsub = onSnapshot(collection(db, "blogs"), (snap) => {
+      const docs = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+      docs.sort((a, b) => {
+        const tA = a.createdAt?.seconds ? a.createdAt.seconds : (a.createdAt || 0);
+        const tB = b.createdAt?.seconds ? b.createdAt.seconds : (b.createdAt || 0);
+        return tB - tA;
+      });
+      setBlogs(docs);
     });
     return () => unsub();
   }, [user]);
