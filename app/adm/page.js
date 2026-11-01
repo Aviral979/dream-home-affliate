@@ -10,10 +10,11 @@ import styles from "./adm.module.css";
 
 const BADGE_OPTIONS = ["Bestseller", "New", "Editor's Pick", "Budget Pick", "Custom"];
 const CAT_OPTIONS = [
-  { value: "living-room", label: "Living Room" },
-  { value: "bedroom", label: "Bedroom" },
-  { value: "bathroom", label: "Bathroom" },
-  { value: "kitchen", label: "Kitchen" },
+  { value: "furniture", label: "Furniture" },
+  { value: "paints-wall-treatments", label: "Paints & Wall Treatments" },
+  { value: "lighting-electricals", label: "Lighting & Electricals" },
+  { value: "flooring-ceilings", label: "Flooring & Ceilings" },
+  { value: "furnishing-textiles", label: "Furnishing & Textiles" },
   { value: "decor", label: "Decor" },
 ];
 

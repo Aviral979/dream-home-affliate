@@ -8,10 +8,11 @@ import ProductCard, { ProductCardSkeleton } from "@/components/ProductCard";
 import styles from "./page.module.css";
 
 const categories = [
-  { slug: "living-room", label: "Living Room", img: "/2.png" },
-  { slug: "bedroom", label: "Bedroom", img: "/3.png" },
-  { slug: "bathroom", label: "Bathroom", img: "/4.png" },
-  { slug: "kitchen", label: "Kitchen", img: "/5.png" },
+  { slug: "furniture", label: "Furniture", img: "/2.png" },
+  { slug: "paints-wall-treatments", label: "Paints & Wall Treatments", img: "/3.png" },
+  { slug: "lighting-electricals", label: "Lighting & Electricals", img: "/4.png" },
+  { slug: "flooring-ceilings", label: "Flooring & Ceilings", img: "/5.png" },
+  { slug: "furnishing-textiles", label: "Furnishing & Textiles", img: "/7.png" },
   { slug: "decor", label: "Decor", img: "/6.png" },
 ];
 
