@@ -35,7 +35,7 @@
   margin: 12px auto 0; border-radius: 2px;
 }
 
-/* ═══ SHOP BY ROOM ═══ */
+/* ═══ SHOP BY CATEGORY ═══ */
 .roomGrid {
   display: flex; gap: 16px; overflow-x: auto;
   padding-bottom: 8px; scroll-snap-type: x mandatory;
@@ -62,8 +62,8 @@
 }
 
 @media (min-width: 768px) {
-  .roomGrid { justify-content: center; overflow: visible; }
-  .roomTile { flex: 0 0 180px; }
+  .roomGrid { justify-content: center; overflow: visible; flex-wrap: wrap; }
+  .roomTile { flex: 0 0 160px; }
 }
 
 /* ═══ TRENDING ═══ */

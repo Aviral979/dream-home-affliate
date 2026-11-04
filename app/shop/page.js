@@ -10,10 +10,11 @@ import styles from "./shop.module.css";
 
 const CATEGORIES = [
   { slug: "", label: "All" },
-  { slug: "living-room", label: "Living Room" },
-  { slug: "bedroom", label: "Bedroom" },
-  { slug: "bathroom", label: "Bathroom" },
-  { slug: "kitchen", label: "Kitchen" },
+  { slug: "furniture", label: "Furniture" },
+  { slug: "paints-wall-treatments", label: "Paints & Wall Treatments" },
+  { slug: "lighting-electricals", label: "Lighting & Electricals" },
+  { slug: "flooring-ceilings", label: "Flooring & Ceilings" },
+  { slug: "furnishing-textiles", label: "Furnishing & Textiles" },
   { slug: "decor", label: "Decor" },
 ];
 

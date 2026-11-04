@@ -8,11 +8,12 @@ import ProductCard, { ProductCardSkeleton } from "@/components/ProductCard";
 import styles from "./page.module.css";
 
 const categories = [
-  { slug: "living-room", label: "Living Room", img: "/2.png" },
-  { slug: "bedroom", label: "Bedroom", img: "/3.png" },
-  { slug: "bathroom", label: "Bathroom", img: "/4.png" },
-  { slug: "kitchen", label: "Kitchen", img: "/5.png" },
-  { slug: "decor", label: "Decor", img: "/6.png" },
+  { slug: "furniture", label: "Furniture", img: "/categories/furniture.jpg" },
+  { slug: "paints-wall-treatments", label: "Paints & Wall Treatments", img: "/categories/paints-wall-treatments.jpg" },
+  { slug: "lighting-electricals", label: "Lighting & Electricals", img: "/categories/lighting-electricals.jpg" },
+  { slug: "flooring-ceilings", label: "Flooring & Ceilings", img: "/categories/flooring-ceilings.jpg" },
+  { slug: "furnishing-textiles", label: "Furnishing & Textiles", img: "/categories/furnishing-textiles.jpg" },
+  { slug: "decor", label: "Decor", img: "/categories/decor.jpg" },
 ];
 
 export default function HomePage() {
@@ -66,7 +67,7 @@ export default function HomePage() {
       {/* ═══ SHOP BY ROOM ═══ */}
       <section className={`section ${styles.roomSection} animate-fade-up delay-1`}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>Shop by Room</h2>
+          <h2 className={styles.sectionTitle}>Shop by Category</h2>
           <div className={styles.roomGrid}>
             {categories.map((cat) => (
               <Link key={cat.slug} href={`/shop?category=${cat.slug}`} className={styles.roomTile}>
@@ -93,7 +94,7 @@ export default function HomePage() {
               {trending.map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           ) : (
-            <p className={styles.emptyHint}>Products coming soon! Configure Firebase and add products via <Link href="/adm" style={{ color: "var(--sage)" }}>/adm</Link></p>
+            <p className={styles.emptyHint}>Products coming soon!</p>
           )}
         </div>
       </section>
